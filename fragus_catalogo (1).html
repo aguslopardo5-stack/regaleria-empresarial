@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fragus — Regalería Empresarial</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bordo: #6B1A1A;
+  --bordo-med: #8B2525;
+  --bordo-claro: #f5e8e8;
+  --verde: #0A4A1F;
+  --verde-med: #1A7A36;
+  --verde-claro: #D6EDD9;
+  --verde-hover: #0d5c27;
+  --acento: #2ECC71;
+  --texto: #1a1a1a;
+  --gris: #666;
+  --gris-claro: #f4f7f4;
+  --blanco: #fff;
+  --sombra: 0 4px 24px rgba(10,74,31,0.12);
+  --sombra-hover: 0 8px 32px rgba(10,74,31,0.22);
+  --radio: 14px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--acento);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 7px 0;
+  position: relative;
+}
+.ticker-track {
+  display: inline-flex;
+  animation: ticker 22s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 32px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--verde);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.ticker-sep {
+  color: var(--verde);
+  opacity: 0.4;
+  font-size: 1rem;
+}
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--gris-claro);
+  color: var(--texto);
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+header {
+  background: none;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+}
+.header-inner {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-height: 64px;
+}
+.brands-wrap {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+}
+.brand-fragus {
+  flex: 1;
+  background: var(--verde);
+  padding: 12px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.brand-rancho-wrap {
+  flex: 1;
+  background: var(--bordo);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.brand { display: flex; flex-direction: column; }
+.brand-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  color: var(--blanco);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.brand-tag {
+  font-size: 0.72rem;
+  color: #9FD4AA;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.header-right { display: flex; align-items: center; gap: 16px; background: var(--bordo); padding: 0 20px 0 0; }
+.brand-divider { width: 2px; height: auto; background: rgba(255,255,255,0.3); margin: 0; flex-shrink: 0; }
+.brand-rancho .brand-tag { color: #e8b4b4; }
+.cart-btn {
+  background: var(--acento);
+  color: var(--blanco);
+  border: none;
+  border-radius: 40px;
+  padding: 10px 20px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  position: relative;
+}
+.cart-btn:hover { background: #27ae60; transform: translateY(-1px); }
+.cart-count {
+  background: var(--blanco);
+  color: var(--verde);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(160deg, #0a1f0f 0%, #0A4A1F 40%, #1a7a36 80%, #0d2d14 100%);
+  padding: 48px 24px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: var(--blanco);
+  letter-spacing: 3px;
+  position: relative;
+}
+.hero p {
+  color: #b8e8c4;
+  font-size: 1rem;
+  margin-top: 8px;
+  position: relative;
+}
+.badges {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  position: relative;
+}
+.badge {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: var(--blanco);
+  border-radius: 40px;
+  padding: 6px 16px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  backdrop-filter: blur(4px);
+}
+
+/* ── SLIDER ── */
+.slider-wrap {
+  position: relative;
+  margin-top: 22px;
+  height: 56px;
+  overflow: hidden;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  pointer-events: none;
+}
+.slide.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.slide.exit   { opacity: 0; transform: translateY(-22px); }
+.slide-icon { font-size: 1.8rem; }
+.slide-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  color: var(--blanco);
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+  position: relative;
+}
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.dot.active { background: var(--blanco); width: 20px; border-radius: 3px; }
+
+/* ── FILTERS ── */
+.filters {
+  max-width: 1200px;
+  margin: 28px auto 0;
+  padding: 0 24px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  background: var(--blanco);
+  border: 2px solid var(--verde-claro);
+  color: var(--verde);
+  border-radius: 40px;
+  padding: 7px 18px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.filter-btn.rancho-filter:hover, .filter-btn.rancho-filter.active {
+  background: var(--bordo) !important;
+  color: var(--blanco) !important;
+  border-color: var(--bordo) !important;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--verde);
+  color: var(--blanco);
+  border-color: var(--verde);
+}
+
+/* ── SEARCH ── */
+.search-wrap {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  padding: 0 24px;
+}
+.search-box {
+  position: relative;
+  max-width: 480px;
+}
+.search-input {
+  width: 100%;
+  background: var(--blanco);
+  border: 2px solid var(--verde-claro);
+  border-radius: 40px;
+  padding: 11px 20px 11px 44px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--texto);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-input:focus {
+  border-color: var(--verde);
+  box-shadow: 0 0 0 3px rgba(10,74,31,0.08);
+}
+.search-input::placeholder { color: #aaa; font-weight: 600; }
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--verde);
+  pointer-events: none;
+  font-size: 1rem;
+}
+.search-clear {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--verde-claro);
+  border: none;
+  color: var(--verde);
+  border-radius: 50%;
+  width: 22px; height: 22px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  transition: background 0.15s;
+}
+.search-clear:hover { background: #bde0c0; }
+.search-clear.visible { display: flex; }
+.no-results {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 48px 16px;
+  color: var(--gris);
+  display: none;
+}
+.no-results-icon { font-size: 3rem; display: block; margin-bottom: 12px; }
+.no-results.show { display: block; }
+
+/* ── SEARCH AUTOCOMPLETE ── */
+.search-box { position: relative; max-width: 480px; }
+.autocomplete-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0; right: 0;
+  background: var(--blanco);
+  border: 2px solid var(--verde);
+  border-radius: 14px;
+  box-shadow: var(--sombra-hover);
+  z-index: 50;
+  overflow: hidden;
+  max-height: 280px;
+  overflow-y: auto;
+  display: none;
+}
+.autocomplete-list.open { display: block; }
+.autocomplete-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-size: 0.88rem;
+  border-bottom: 1px solid var(--verde-claro);
+}
+.autocomplete-item:last-child { border-bottom: none; }
+.autocomplete-item:hover, .autocomplete-item.focused {
+  background: var(--verde-claro);
+}
+.autocomplete-icon { font-size: 1.2rem; min-width: 24px; text-align: center; }
+.autocomplete-name { font-weight: 800; color: var(--verde); }
+.autocomplete-sub { font-size: 0.75rem; color: var(--gris); margin-top: 1px; }
+.autocomplete-cat {
+  margin-left: auto;
+  font-size: 0.68rem;
+  font-weight: 800;
+  background: var(--verde-claro);
+  color: var(--verde);
+  padding: 2px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.autocomplete-cat.rancho {
+  background: var(--bordo-claro);
+  color: var(--bordo);
+}
+.autocomplete-empty {
+  padding: 14px;
+  text-align: center;
+  color: var(--gris);
+  font-size: 0.85rem;
+}
+
+/* ── GRID ── */
+.grid-container {
+  max-width: 1200px;
+  margin: 24px auto 120px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  overflow: hidden;
+  transition: all 0.25s;
+  display: flex;
+  flex-direction: column;
+  animation: fadeUp 0.4s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--sombra-hover); }
+.card.rancho { border-top: 3px solid var(--bordo); }
+.card.rancho .card-cat { background: var(--bordo); }
+.card.rancho .card-title { color: var(--bordo); }
+.card.rancho .tier:hover, .card.rancho .tier.selected { background: var(--bordo-claro); border-color: var(--bordo-med); }
+.card.rancho .tier-price { color: var(--bordo); }
+.card.rancho .add-btn { background: var(--bordo); }
+.card.rancho .add-btn:hover { background: var(--bordo-med); }
+.card.hidden { display: none; }
+
+.card-img {
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(135deg, var(--verde-claro), #e8f5e9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  position: relative;
+}
+.card-cat {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--verde);
+  color: var(--blanco);
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
+.card-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--verde);
+  margin-bottom: 4px;
+}
+.card-subtitle {
+  font-size: 0.78rem;
+  color: var(--gris);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* Price tiers */
+.price-tiers { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+.tier {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--gris-claro);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.15s;
+}
+.tier:hover, .tier.selected {
+  background: var(--verde-claro);
+  border-color: var(--verde-med);
+}
+.tier-qty { font-size: 0.78rem; color: var(--gris); font-weight: 600; }
+.tier-price { font-size: 0.95rem; font-weight: 800; color: var(--verde); }
+.tier-total { font-size: 0.7rem; color: var(--verde-med); font-weight: 700; }
+
+.card-footer { margin-top: auto; }
+.add-btn {
+  width: 100%;
+  background: var(--verde);
+  color: var(--blanco);
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.18s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.add-btn:hover { background: var(--verde-hover); transform: translateY(-1px); }
+.add-btn.added { background: var(--acento); }
+
+/* ── CART PANEL ── */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+.cart-overlay.open { opacity: 1; pointer-events: all; }
+
+.cart-panel {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(400px, 100vw);
+  background: var(--blanco);
+  z-index: 201;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 32px rgba(0,0,0,0.18);
+}
+.cart-panel.open { transform: translateX(0); }
+
+.cart-header {
+  background: var(--verde);
+  color: var(--blanco);
+  padding: 20px 20px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cart-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 1px; }
+.cart-close {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: var(--blanco);
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.cart-close:hover { background: rgba(255,255,255,0.28); }
+
+.cart-items { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.cart-empty { text-align: center; color: var(--gris); padding: 48px 16px; }
+.cart-empty-icon { font-size: 3rem; display: block; margin-bottom: 12px; }
+
+.cart-item {
+  background: var(--gris-claro);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  animation: fadeUp 0.2s ease;
+}
+.cart-item-icon { font-size: 1.8rem; min-width: 40px; text-align: center; }
+.cart-item-info { flex: 1; }
+.cart-item-name { font-weight: 800; font-size: 0.88rem; color: var(--verde); }
+.cart-item-detail { font-size: 0.75rem; color: var(--gris); margin-top: 2px; }
+.cart-item-price { font-weight: 800; font-size: 0.9rem; color: var(--verde); white-space: nowrap; }
+.cart-item-remove {
+  background: none;
+  border: none;
+  color: #cc4444;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.cart-item-remove:hover { background: #ffe0e0; }
+
+.cart-footer { padding: 16px; border-top: 2px solid var(--verde-claro); }
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+.cart-total span:last-child { color: var(--verde); font-size: 1.3rem; }
+.wa-btn {
+  width: 100%;
+  background: #25D366;
+  color: var(--blanco);
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.18s;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+}
+.wa-btn:hover { background: #20b858; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.45); }
+.wa-btn svg { width: 22px; height: 22px; }
+.cart-note { font-size: 0.72rem; color: var(--gris); text-align: center; margin-top: 8px; }
+
+/* ── FLOATING WA BUTTON ── */
+.wa-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 150;
+  background: #25D366;
+  color: var(--blanco);
+  border: none;
+  border-radius: 50%;
+  width: 60px; height: 60px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+  transition: all 0.2s;
+  animation: pulse 2.5s infinite;
+}
+.wa-float:hover { transform: scale(1.12); box-shadow: 0 6px 28px rgba(37,211,102,0.65); animation: none; }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
+  50% { box-shadow: 0 4px 32px rgba(37,211,102,0.8), 0 0 0 8px rgba(37,211,102,0.1); }
+}
+.wa-float svg { width: 30px; height: 30px; }
+
+/* ── PROGRESS BARS ── */
+.cart-progress { padding: 14px 16px 0; }
+.progress-block { margin-bottom: 12px; }
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.progress-label { font-size: 0.75rem; font-weight: 800; color: var(--gris); }
+.progress-label span { color: var(--verde); }
+.progress-track {
+  background: var(--verde-claro);
+  border-radius: 40px;
+  height: 8px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 40px;
+  background: var(--verde-med);
+  transition: width 0.5s cubic-bezier(.4,0,.2,1);
+  position: relative;
+}
+.progress-fill.done { background: var(--acento); }
+.progress-fill.done::after {
+  content: '✓';
+  position: absolute;
+  right: -1px;
+  top: -5px;
+  background: var(--acento);
+  color: white;
+  border-radius: 50%;
+  width: 18px; height: 18px;
+  font-size: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(46,204,113,0.4);
+}
+.progress-msg {
+  font-size: 0.72rem;
+  color: var(--gris);
+  margin-top: 3px;
+  text-align: right;
+}
+.progress-msg.achieved { color: var(--acento); font-weight: 800; }
+
+/* ── CONTACT FORM ── */
+.contact-form { padding: 0 16px 16px; border-top: 2px solid var(--verde-claro); }
+.contact-form h3 {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--verde);
+  margin: 14px 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.form-field { display: flex; flex-direction: column; gap: 3px; }
+.form-field.full { grid-column: 1/-1; }
+.form-label { font-size: 0.7rem; font-weight: 800; color: var(--gris); text-transform: uppercase; letter-spacing: 0.5px; }
+.form-input {
+  border: 2px solid var(--verde-claro);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--texto);
+  outline: none;
+  transition: border-color 0.2s;
+  background: var(--gris-claro);
+}
+.form-input:focus { border-color: var(--verde); background: var(--blanco); }
+.form-input::placeholder { color: #bbb; }
+.form-input.error { border-color: #e74c3c; background: #fff5f5; }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--verde);
+  color: var(--blanco);
+  padding: 10px 22px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  white-space: nowrap;
+  z-index: 300;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── COUNTER ── */
+.counter-section {
+  background: linear-gradient(135deg, var(--verde) 0%, #1a7a36 100%);
+  padding: 40px 24px;
+  margin-bottom: 0;
+}
+.counter-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.counter-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 3px;
+  margin-bottom: 28px;
+}
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+}
+.counter-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radio);
+  padding: 22px 16px;
+  backdrop-filter: blur(4px);
+  transition: transform 0.2s;
+}
+.counter-card:hover { transform: translateY(-3px); }
+.counter-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: var(--blanco);
+  letter-spacing: 2px;
+  line-height: 1;
+  display: block;
+}
+.counter-num .counter-plus {
+  font-size: 2rem;
+  color: var(--acento);
+}
+.counter-label {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 700;
+  margin-top: 6px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.counter-icon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 8px;
+}
+@media (max-width: 600px) {
+  .counter-grid { grid-template-columns: repeat(2, 1fr); }
+  .counter-num { font-size: 2.4rem; }
+}
+
+/* ── GALLERY ── */
+.gallery-section {
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  padding: 0 24px;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: var(--verde);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-subtitle {
+  font-size: 0.88rem;
+  color: var(--gris);
+  margin-bottom: 20px;
+}
+.gallery-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radio);
+}
+.gallery-track {
+  display: flex;
+  gap: 12px;
+  transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+}
+.gallery-item {
+  min-width: calc(33.333% - 8px);
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  background: var(--verde-claro);
+  flex-shrink: 0;
+  box-shadow: var(--sombra);
+  transition: transform 0.2s;
+}
+.gallery-item:hover { transform: scale(1.02); }
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.gallery-placeholder {
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--verde-claro), #e8f5e9);
+}
+.gallery-placeholder-icon { font-size: 2.5rem; }
+.gallery-placeholder-text { font-size: 0.75rem; font-weight: 700; color: var(--verde); text-align: center; padding: 0 8px; }
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,74,31,0.7) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay-text { color: white; font-size: 0.78rem; font-weight: 800; }
+.gallery-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+.gallery-btn {
+  background: var(--verde);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.18s;
+  box-shadow: var(--sombra);
+}
+.gallery-btn:hover { background: var(--verde-hover); transform: scale(1.08); }
+.gallery-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
+.gallery-dots-wrap { display: flex; gap: 5px; }
+.gallery-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--verde-claro);
+  transition: all 0.25s;
+  cursor: pointer;
+}
+.gallery-dot.active { background: var(--verde); width: 18px; border-radius: 3px; }
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+.lightbox.open { opacity: 1; pointer-events: all; }
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  object-fit: contain;
+}
+.lightbox-placeholder {
+  width: 320px; height: 320px;
+  background: var(--verde-claro);
+  border-radius: 12px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 12px;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: rgba(255,255,255,0.15);
+  border: none; color: white;
+  border-radius: 50%; width: 44px; height: 44px;
+  font-size: 1.3rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.28); }
+.lightbox-caption {
+  position: absolute;
+  bottom: 24px; left: 50%;
+  transform: translateX(-50%);
+  color: white; font-weight: 700;
+  font-size: 0.88rem; text-align: center;
+  background: rgba(0,0,0,0.4);
+  padding: 6px 18px; border-radius: 20px;
+}
+@media (max-width: 600px) {
+  .gallery-item { min-width: calc(50% - 6px); }
+}
+
+/* ── INFO SECTION ── */
+.info-section {
+  max-width: 1200px;
+  margin: 0 auto 32px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.info-card {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 22px 20px;
+  border-top: 4px solid var(--verde);
+}
+.info-card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem;
+  color: var(--verde);
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 0.88rem;
+  color: var(--texto);
+  line-height: 1.45;
+}
+.info-item:last-child { margin-bottom: 0; }
+.info-dot {
+  min-width: 24px;
+  height: 24px;
+  background: var(--verde-claro);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--verde);
+  margin-top: 1px;
+}
+.info-item strong { color: var(--verde); }
+.process-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.process-step:last-child { margin-bottom: 0; }
+.step-num {
+  min-width: 28px;
+  height: 28px;
+  background: var(--verde);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.82rem;
+}
+.step-arrow {
+  position: relative;
+}
+.step-arrow::before {
+  content: '';
+  position: absolute;
+  left: 13px;
+  top: 28px;
+  width: 2px;
+  height: 10px;
+  background: var(--verde-claro);
+}
+.process-step:last-child .step-arrow::before { display: none; }
+.step-text { font-size: 0.88rem; color: var(--texto); line-height: 1.4; }
+.step-text strong { color: var(--verde); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--verde);
+  color: #9FD4AA;
+  text-align: center;
+  padding: 24px;
+  font-size: 0.82rem;
+}
+footer strong { color: var(--blanco); }
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2.2rem; }
+  .grid-container { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .card-img { height: 120px; font-size: 2.5rem; }
+  .tier-total { display: none; }
+
+  /* Header mobile */
+  header { background: none !important; }
+  .header-inner {
+    padding: 0;
+    gap: 0;
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 56px;
+  }
+  .brands-wrap {
+    flex: 1;
+    flex-direction: row;
+    align-items: stretch;
+    min-width: 0;
+  }
+  .brand-fragus {
+    flex: 1;
+    background: var(--verde);
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .brand-divider {
+    width: 2px;
+    height: auto;
+    margin: 0;
+    background: rgba(255,255,255,0.3);
+    flex-shrink: 0;
+  }
+  .brand-rancho-wrap {
+    flex: 1;
+    background: var(--bordo);
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .brand-name { font-size: 1.1rem; letter-spacing: 1px; }
+  .brand-tag { font-size: 0.55rem; }
+  .header-right {
+    background: var(--bordo);
+    padding: 8px 8px 8px 0;
+    display: flex;
+    align-items: center;
+  }
+  .cart-btn { padding: 7px 10px; font-size: 0.78rem; white-space: nowrap; }
+
+  /* Filters mobile */
+  .filters { gap: 6px; }
+  .filter-btn { padding: 6px 12px; font-size: 0.78rem; }
+
+  /* Counter mobile */
+  .counter-grid { grid-template-columns: repeat(2, 1fr); }
+  .counter-num { font-size: 2.4rem; }
+
+  /* Gallery mobile */
+  .gallery-item { min-width: calc(50% - 6px); }
+
+  /* Info section mobile */
+  .info-section { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 420px) {
+  .grid-container { grid-template-columns: 1fr; }
+  .brand-fragus .brand-name,
+  .brand-rancho .brand-name { font-size: 1.4rem; }
+}
+@media (max-width: 420px) {
+  .grid-container { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="brands-wrap">
+      <div class="brand brand-fragus">
+        <span class="brand-name">FRAGUS</span>
+        <span class="brand-tag">Todo Para los Materos</span>
+      </div>
+      <div class="brand-divider"></div>
+      <div class="brand-rancho-wrap">
+        <div class="brand brand-rancho">
+          <span class="brand-name">EL RANCHO</span>
+          <span class="brand-tag" style="color:#e8b4b4;">Saladillo</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="cart-btn" onclick="toggleCart()">
+        🛒 Mi pedido
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Regalería Empresarial</h1>
+  <p>Grabado láser a pedido · Producción propia · Enviamos a todo el país</p>
+
+  <!-- SLIDER -->
+  <div class="slider-wrap" id="sliderWrap"></div>
+  <div class="slider-dots" id="sliderDots"></div>
+
+  <div class="badges">
+    <span class="badge">+2 años de experiencia</span>
+    <span class="badge">⚡ Láser propio</span>
+    <span class="badge">🚚 Vía Cargo & Correo Argentino</span>
+    <span class="badge">💳 Mercado Pago · Visa · Mastercard</span>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input class="search-input" id="searchInput" type="text"
+           placeholder="Buscar producto... (ej: termo, mate, tabla)"
+           oninput="handleSearch(this.value)" onkeydown="handleSearchKey(event)" autocomplete="off">
+    <button class="search-clear" id="searchClear" onclick="clearSearch()">✕</button>
+    <div class="autocomplete-list" id="autocompleteList"></div>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filters">
+  <button class="filter-btn active" onclick="filterProducts('all', this)">Todos</button>
+  <button class="filter-btn" onclick="filterProducts('mate', this)">Mates</button>
+  <button class="filter-btn" onclick="filterProducts('termo', this)">Termos</button>
+  <button class="filter-btn" onclick="filterProducts('kit', this)">Kits</button>
+  <button class="filter-btn rancho-filter" onclick="filterProducts('madera', this)">Tablas</button>
+  <button class="filter-btn" onclick="filterProducts('vaso', this)">Vasos</button>
+  <button class="filter-btn rancho-filter" onclick="filterProducts('oficina', this)">Oficina</button>
+  <button class="filter-btn rancho-filter" onclick="filterProducts('banner', this)">Banners</button>
+  <button class="filter-btn rancho-filter" onclick="filterProducts('llavero', this)">Llaveros</button>
+  <button class="filter-btn" onclick="filterProducts('cuchillo', this)">Cuchillos</button>
+  <button class="filter-btn" onclick="filterProducts('servicio', this)">Servicios</button>
+</div>
+
+<!-- GRID -->
+<div class="grid-container" id="productGrid"><div class="no-results" id="noResults"><span class="no-results-icon">🔍</span><p>No encontramos productos para "<strong id="noResultsTerm"></strong>".<br>Probá con otra palabra.</p></div></div>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h2>Tu Pedido</h2>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <span class="cart-empty-icon">🛒</span>
+      <p>Tu pedido está vacío.<br>Elegí los productos y las cantidades.</p>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-progress" id="cartProgress"></div>
+    <div class="cart-total">
+      <span>Total estimado</span>
+      <span id="cartTotal">$0</span>
+    </div>
+    <div id="discountBadge" style="display:none;background:var(--verde-claro);border-radius:8px;padding:7px 12px;margin-bottom:10px;font-size:0.78rem;font-weight:800;color:var(--verde);text-align:center;">
+      🎉 ¡5% OFF aplicado! Ahorrás <span id="discountAmount"></span>
+    </div>
+    <div class="contact-form">
+      <h3>👤 Tus datos de contacto</h3>
+      <div class="form-grid">
+        <div class="form-field full">
+          <label class="form-label">Nombre y apellido *</label>
+          <input class="form-input" id="fNombre" placeholder="Ej: Juan Pérez" type="text">
+        </div>
+        <div class="form-field full">
+          <label class="form-label">Comercio / Empresa *</label>
+          <input class="form-input" id="fEmpresa" placeholder="Ej: Concesionaria Los Andes" type="text">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Ciudad *</label>
+          <input class="form-input" id="fCiudad" placeholder="Ej: Saladillo" type="text">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Provincia *</label>
+          <input class="form-input" id="fProvincia" placeholder="Ej: Buenos Aires" type="text">
+        </div>
+      </div>
+    </div>
+
+    <button class="wa-btn" onclick="sendWhatsApp()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Enviar pedido por WhatsApp
+    </button>
+    <p class="cart-note">Se abrirá WhatsApp con tu pedido listo para enviar</p>
+  </div>
+</div>
+
+<!-- FLOATING WA BUTTON -->
+<button class="wa-float" onclick="openWhatsApp()" title="Consultar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</button>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- FOOTER -->
+<!-- COUNTER -->
+<div class="counter-section">
+  <div class="counter-inner">
+    <div class="counter-title">— Nuestros números —</div>
+    <div class="counter-grid">
+      <div class="counter-card">
+        <span class="counter-icon">🧉</span>
+        <span class="counter-num" data-target="1200"><span class="counter-plus">+</span></span>
+        <span class="counter-label">Productos personalizados</span>
+      </div>
+      <div class="counter-card">
+        <span class="counter-icon">🏢</span>
+        <span class="counter-num" data-target="80"><span class="counter-plus">+</span></span>
+        <span class="counter-label">Empresas y clientes</span>
+      </div>
+      <div class="counter-card">
+        <span class="counter-icon">📦</span>
+        <span class="counter-num" data-target="350"><span class="counter-plus">+</span></span>
+        <span class="counter-label">Pedidos entregados</span>
+      </div>
+      <div class="counter-card">
+        <span class="counter-icon">⭐</span>
+        <span class="counter-num" data-target="2"><span class="counter-plus">+</span></span>
+        <span class="counter-label">Años de experiencia</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery-section">
+  <div class="section-title">📸 Nuestros Trabajos</div>
+  <div class="section-subtitle">Algunos de los productos que personalizamos para nuestros clientes — próximamente con fotos reales</div>
+  <div class="gallery-carousel">
+    <div class="gallery-track" id="galleryTrack"></div>
+  </div>
+  <div class="gallery-nav">
+    <button class="gallery-btn" id="galleryPrev" onclick="moveGallery(-1)">&#8592;</button>
+    <div class="gallery-dots-wrap" id="galleryDots"></div>
+    <button class="gallery-btn" id="galleryNext" onclick="moveGallery(1)">&#8594;</button>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div id="lightboxContent"></div>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<!-- EL RANCHO DIVIDER -->
+<div style="background:linear-gradient(135deg,#6B1A1A 0%,#8B2525 100%);padding:24px;margin:40px 0 0;text-align:center;">
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:white;letter-spacing:3px;">🏡 EL RANCHO · SALADILLO</div>
+  <div style="color:#e8b4b4;font-size:0.82rem;margin-top:4px;">Carpetas · Lapiceras · Llaveros · Calcomanías · Anotadores · Banners</div>
+</div>
+
+<!-- INFO SECTION -->
+<div class="info-section" style="margin-top:40px;">
+
+  <!-- Entrega y retiro -->
+  <div class="info-card">
+    <div class="info-card-title">🚚 Entrega y Retiro</div>
+    <div class="info-item">
+      <div class="info-dot">⏱</div>
+      <div><strong>10 a 15 días hábiles</strong> de producción una vez señado o pagado el pedido</div>
+    </div>
+    <div class="info-item">
+      <div class="info-dot">📦</div>
+      <div>Enviamos a todo el país por <strong>Vía Cargo</strong> y <strong>Correo Argentino</strong></div>
+    </div>
+    <div class="info-item">
+      <div class="info-dot">🏠</div>
+      <div><strong>Retiro gratis</strong> en Saladillo, Provincia de Buenos Aires</div>
+    </div>
+    <div class="info-item">
+      <div class="info-dot">🎁</div>
+      <div><strong>Envío gratis</strong> en pedidos a partir de $350.000</div>
+    </div>
+  </div>
+
+  <!-- Proceso de trabajo -->
+  <div class="info-card">
+    <div class="info-card-title">⚙️ Cómo Trabajamos</div>
+    <div class="process-step step-arrow">
+      <div class="step-num">1</div>
+      <div class="step-text">📩 <strong>Nos mandás tu logo</strong> — en cualquier formato</div>
+    </div>
+    <div class="process-step step-arrow">
+      <div class="step-num">2</div>
+      <div class="step-text">🎨 <strong>Diseñamos el grabado</strong> — adaptamos tu imagen al producto</div>
+    </div>
+    <div class="process-step step-arrow">
+      <div class="step-num">3</div>
+      <div class="step-text">✅ <strong>Aprobás el pedido</strong> — te mandamos una muestra digital</div>
+    </div>
+    <div class="process-step step-arrow">
+      <div class="step-num">4</div>
+      <div class="step-text">🏭 <strong>Producimos</strong> — grabado láser en nuestro taller propio</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">5</div>
+      <div class="step-text">🚀 <strong>Enviamos</strong> — a donde nos indiques en todo el país</div>
+    </div>
+  </div>
+
+  <!-- Ubicación -->
+  <div class="info-card" style="border-top-color: #1A7A36;">
+    <div class="info-card-title">📍 Dónde Estamos</div>
+    <div class="info-item">
+      <div class="info-dot">🏙️</div>
+      <div><strong>Saladillo</strong>, Provincia de Buenos Aires</div>
+    </div>
+    <div class="info-item">
+      <div class="info-dot">🗺️</div>
+      <div>Ubicados en el <strong>centro de la Provincia de Buenos Aires</strong> — estratégico para envíos a todo el país</div>
+    </div>
+    <div class="info-item">
+      <div class="info-dot">🏠</div>
+      <div><strong>Retiro gratuito</strong> coordinando por WhatsApp</div>
+    </div>
+    <a href="https://www.google.com/maps/search/Saladillo,+Buenos+Aires,+Argentina" target="_blank"
+       style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;background:var(--verde);color:white;text-decoration:none;border-radius:10px;padding:12px;font-weight:800;font-size:0.88rem;transition:background 0.2s;"
+       onmouseover="this.style.background='#0d5c27'" onmouseout="this.style.background='var(--verde)'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      Ver en Google Maps
+    </a>
+  </div>
+
+  <!-- Pago y condiciones -->
+  <div class="info-card">
+    <div class="info-card-title">💳 Pago y Condiciones</div>
+    <div class="info-item">
+      <div class="info-dot">💰</div>
+      <div>Se abona una <strong>seña para iniciar la producción</strong> y el resto contra entrega</div>
+    </div>
+    <div class="info-item">
+      <div class="info-dot">💳</div>
+      <div>Aceptamos <strong>Mercado Pago, Visa, Mastercard</strong> y transferencia bancaria</div>
+    </div>
+    <div class="info-item">
+      <div class="info-dot">💸</div>
+      <div><strong>5% OFF extra</strong> en pedidos a partir de $300.000</div>
+    </div>
+    <div class="info-item">
+      <div class="info-dot">📋</div>
+      <div>Precios <strong>por unidad según volumen</strong> — a mayor cantidad, menor precio</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div style="max-width:600px;margin:0 auto;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:white;letter-spacing:2px;margin-bottom:4px;">FRAGUS</div>
+    <div style="color:#9FD4AA;font-size:0.82rem;margin-bottom:16px;">Regalería empresarial personalizada con grabado láser</div>
+    <div style="display:flex;justify-content:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;">
+      <!-- Instagram -->
+      <a href="https://instagram.com/fragusmates" target="_blank"
+         style="display:flex;align-items:center;gap:7px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:white;text-decoration:none;border-radius:30px;padding:8px 16px;font-weight:800;font-size:0.82rem;transition:opacity 0.2s;"
+         onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        @fragusmates
+      </a>
+      <!-- Facebook -->
+      <a href="https://facebook.com/fragusmates" target="_blank"
+         style="display:flex;align-items:center;gap:7px;background:#1877F2;color:white;text-decoration:none;border-radius:30px;padding:8px 16px;font-weight:800;font-size:0.82rem;transition:opacity 0.2s;"
+         onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        fragusmates
+      </a>
+      <!-- TikTok -->
+      <a href="https://tiktok.com/@fragusmates" target="_blank"
+         style="display:flex;align-items:center;gap:7px;background:#010101;color:white;text-decoration:none;border-radius:30px;padding:8px 16px;font-weight:800;font-size:0.82rem;border:1px solid rgba(255,255,255,0.15);transition:opacity 0.2s;"
+         onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+        @fragusmates
+      </a>
+    </div>
+    <div style="background:var(--bordo);border-radius:12px;padding:16px 20px;margin-top:16px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:white;letter-spacing:2px;margin-bottom:10px;">🏡 EL RANCHO · SALADILLO</div>
+      <div style="display:flex;justify-content:center;">
+        <a href="https://www.instagram.com/elrancho.sa/" target="_blank" style="display:flex;align-items:center;gap:7px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:white;text-decoration:none;border-radius:30px;padding:8px 16px;font-weight:800;font-size:0.82rem;transition:opacity 0.2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+          📸 @elrancho.sa
+        </a>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:14px;color:#9FD4AA;font-size:0.78rem;line-height:1.8;">
+      📧 fragusventamayorista@gmail.com &nbsp;|&nbsp; 📱 2344438234
+    </div>
+  </div>
+</footer>
+
+<script>
+const WA_NUMBER = '542344438234';
+
+const products = [
+  {
+    id: 1, cat: 'mate', emoji: '🧉', name: 'Mate de Acero',
+    subtitle: 'Incluye bombilla de acero inoxidable + grabado láser',
+    tiers: [
+      { qty: 'x10 unidades', unit: 11000, total: 110000 },
+      { qty: 'x30 unidades', unit: 9000, total: 270000 },
+      { qty: 'x60+ unidades', unit: 7900, total: 474000 },
+    ]
+  },
+  {
+    id: 2, cat: 'termo', emoji: '♨️', name: 'Termo de Acero',
+    subtitle: 'Estilo media manija · Color negro o acero · Grabado láser',
+    tiers: [
+      { qty: 'x10 unidades', unit: 23000, total: 230000 },
+      { qty: 'x30 unidades', unit: 20500, total: 615000 },
+      { qty: 'x60+ unidades', unit: 19000, total: 1140000 },
+    ]
+  },
+  {
+    id: 3, cat: 'kit', emoji: '🎁', name: 'Kit Combo — Mate + Termo',
+    subtitle: 'Ambos grabados con tu logo · Ideal para entrega de 0km',
+    tiers: [
+      { qty: 'x10 unidades', unit: 32000, total: 320000 },
+      { qty: 'x30 unidades', unit: 28000, total: 840000 },
+      { qty: 'x60+ unidades', unit: 25500, total: 1530000 },
+    ]
+  },
+  {
+    id: 4, cat: 'mate', emoji: '🥥', name: 'Mate Imperial Calabaza',
+    subtitle: 'Virola y guarda de acero inox · Bombilla pico loro de regalo',
+    tiers: [
+      { qty: 'x10 unidades', unit: 31500, total: 315000 },
+      { qty: 'x30 unidades', unit: 29000, total: 870000 },
+      { qty: 'x60+ unidades', unit: 26900, total: 1614000 },
+    ]
+  },
+  {
+    id: 5, cat: 'mate', emoji: '🌳', name: 'Mate Imperial Algarrobo',
+    subtitle: 'Guarda y virola de acero inox · Bombilla pico loro de regalo',
+    tiers: [
+      { qty: 'x10 unidades', unit: 29000, total: 290000 },
+      { qty: 'x30 unidades', unit: 27500, total: 825000 },
+      { qty: 'x60+ unidades', unit: 25000, total: 1500000 },
+    ]
+  },
+  {
+    id: 6, cat: 'mate', emoji: '🚛', name: 'Mate Camionero Algarrobo',
+    subtitle: 'Bombilla chata de acero inox · Grabado láser en virola',
+    tiers: [
+      { qty: 'x10 unidades', unit: 19500, total: 195000 },
+      { qty: 'x30 unidades', unit: 17500, total: 525000 },
+      { qty: 'x60+ unidades', unit: 16300, total: 978000 },
+    ]
+  },
+  {
+    id: 7, cat: 'kit', emoji: '🌿', name: 'Kit Empresarial Criollo',
+    subtitle: 'Mate criollo + bombilla pico loro + yerbero chaulata',
+    tiers: [
+      { qty: 'x10 unidades', unit: 26500, total: 265000 },
+      { qty: 'x30 unidades', unit: 25000, total: 750000 },
+      { qty: 'x60+ unidades', unit: 23900, total: 1434000 },
+    ]
+  },
+  {
+    id: 8, cat: 'madera', emoji: '🪵', name: 'Tabla de Madera de Pino',
+    subtitle: '20x30 cm · Ya curadas y listas para usar · Grabado láser',
+    tiers: [
+      { qty: 'x10 unidades', unit: 6900, total: 69000 },
+      { qty: 'x30 unidades', unit: 5700, total: 171000 },
+      { qty: 'x60+ unidades', unit: 4900, total: 294000 },
+    ]
+  },
+  {
+    id: 10, cat: 'mate', emoji: '🌿', name: 'Mate Criollo',
+    subtitle: 'Con bombilla pico loro de acero inoxidable · Grabado láser',
+    tiers: [
+      { qty: 'x10 unidades', unit: 18500, total: 185000 },
+      { qty: 'x30 unidades', unit: 17000, total: 510000 },
+      { qty: 'x60+ unidades', unit: 16000, total: 960000 },
+    ]
+  },
+  {
+    id: 12, cat: 'madera', emoji: '🪵', name: 'Tabla de Pino con Herraduras',
+    subtitle: 'Ideal para servir asados y eventos gastronómicos · Grabado láser',
+    tiers: [
+      { qty: 'x10 unidades', unit: 19500, total: 195000 },
+      { qty: 'x30 unidades', unit: 18000, total: 540000 },
+      { qty: 'x60+ unidades', unit: 16900, total: 1014000 },
+    ]
+  },
+  {
+    id: 23, cat: 'madera', emoji: '🧀', name: 'Tabla de Picada con Triple Dip',
+    subtitle: 'Madera de pino · Espacio triple dip · Grabado láser a elección incluido · Ideal para eventos y gastronomía',
+    tiers: [
+      { qty: 'x10 unidades', unit: 9000,  total: 90000  },
+      { qty: 'x30 unidades', unit: 8100,  total: 243000 },
+      { qty: 'x60+ unidades', unit: 7600, total: 456000 },
+    ]
+  },
+  {
+    id: 11, cat: 'vaso', emoji: '🥤', name: 'Vaso Fernetero de Aluminio',
+    subtitle: '750cm³ · Grabado láser con tu logo · Ideal para eventos y empresas',
+    tiers: [
+      { qty: 'x10 unidades', unit: 9500,  total: 95000  },
+      { qty: 'x30 unidades', unit: 7500,  total: 225000 },
+      { qty: 'x60+ unidades', unit: 5900, total: 354000 },
+    ]
+  },
+  {
+    id: 13, cat: 'cuchillo', emoji: '🔪', name: 'Cuchillo Artesanal',
+    subtitle: 'Hoja 14cm acero inox dagger · Cabo artesanal · Grabado láser incluido',
+    tiers: [
+      { qty: 'x10 unidades', unit: 24000, total: 240000 },
+      { qty: 'x30 unidades', unit: 22500, total: 675000 },
+      { qty: 'x60+ unidades', unit: 21000, total: 1260000 },
+    ]
+  },
+  {
+    id: 14, cat: 'llavero', emoji: '🔑', name: 'Llavero con Cinta',
+    subtitle: 'Personalizado con tu logo · Grabado láser incluido',
+    tiers: [
+      { qty: 'x50 unidades',  unit: 0, total: 0 },
+      { qty: 'x100 unidades', unit: 0, total: 0 },
+      { qty: 'x300 unidades', unit: 0, total: 0 },
+    ]
+  },
+  {
+    id: 15, cat: 'llavero', emoji: '🏷️', name: 'Llavero con Dome',
+    subtitle: 'Personalizado con tu logo · Grabado láser incluido',
+    tiers: [
+      { qty: 'x50 unidades',  unit: 0, total: 0 },
+      { qty: 'x100 unidades', unit: 0, total: 0 },
+      { qty: 'x300 unidades', unit: 0, total: 0 },
+    ]
+  },
+  {
+    id: 16, cat: 'banner', emoji: '🪧', name: 'Banner Roll Up',
+    subtitle: 'Impresión a todo color · Incluye estructura enrollable · Ideal para eventos y stands',
+    tiers: [
+      { qty: 'x10 unidades', unit: 0, total: 0 },
+      { qty: 'x30 unidades', unit: 0, total: 0 },
+      { qty: 'x60+ unidades', unit: 0, total: 0 },
+    ]
+  },
+  {
+    id: 17, cat: 'banner', emoji: '🏳️', name: 'Banner con Portabanner',
+    subtitle: '2 tensores incluidos · Impresión a todo color · Ideal para locales y eventos',
+    tiers: [
+      { qty: 'x10 unidades', unit: 0, total: 0 },
+      { qty: 'x30 unidades', unit: 0, total: 0 },
+      { qty: 'x60+ unidades', unit: 0, total: 0 },
+    ]
+  },
+  {
+    id: 18, cat: 'oficina', emoji: '📁', name: 'Carpetas',
+    subtitle: 'Personalizadas con tu logo · Ideales para presentaciones y reuniones',
+    tiers: [
+      { qty: 'x10 unidades', unit: 0, total: 0 },
+      { qty: 'x30 unidades', unit: 0, total: 0 },
+      { qty: 'x60+ unidades', unit: 0, total: 0 },
+    ]
+  },
+  {
+    id: 19, cat: 'oficina', emoji: '🖊️', name: 'Lapiceras',
+    subtitle: 'Personalizadas con tu logo · Grabado láser o impresión',
+    tiers: [
+      { qty: 'x100 unidades', unit: 1200, total: 120000 },
+      { qty: 'x200 unidades', unit: 1050, total: 210000 },
+      { qty: 'x500+ unidades', unit: 900, total: 450000 },
+    ]
+  },
+  {
+    id: 20, cat: 'oficina', emoji: '🏷️', name: 'Calcomanías',
+    subtitle: 'Personalizadas con tu logo · Vinilo de alta calidad',
+    tiers: [
+      { qty: 'x10 unidades', unit: 0, total: 0 },
+      { qty: 'x30 unidades', unit: 0, total: 0 },
+      { qty: 'x60+ unidades', unit: 0, total: 0 },
+    ]
+  },
+  {
+    id: 21, cat: 'oficina', emoji: '📓', name: 'Anotadores',
+    subtitle: 'Personalizados con tu logo · Tapa con grabado láser',
+    tiers: [
+      { qty: 'x10 unidades', unit: 0, total: 0 },
+      { qty: 'x30 unidades', unit: 0, total: 0 },
+      { qty: 'x60+ unidades', unit: 0, total: 0 },
+    ]
+  },
+  {
+    id: 22, cat: 'mate', emoji: '🎃', name: 'Mate Camionero Calabaza',
+    subtitle: 'Virola de acero inox · Bombilla pico loro de regalo · Disponible en negro y borravino',
+    tiers: [
+      { qty: 'x10 unidades', unit: 28800, total: 288000 },
+      { qty: 'x30 unidades', unit: 27000, total: 810000 },
+      { qty: 'x60+ unidades', unit: 26200, total: 1572000 },
+    ]
+  },
+  {
+    id: 9, cat: 'servicio', emoji: '⚡', name: 'Grabados Personalizados',
+    subtitle: 'Sobre tus propios productos · Madera, acero, cuero, vidrio y más',
+    tiers: [
+      { qty: 'Consultar precio', unit: 0, total: 0 },
+    ]
+  },
+];
+
+let cart = [];
+let selectedTiers = {};
+
+// Init selected tiers
+products.forEach(p => { selectedTiers[p.id] = 0; });
+
+function formatPrice(n) {
+  if (n === 0) return 'A consultar';
+  return '$' + n.toLocaleString('es-AR');
+}
+
+function renderGrid() {
+  const grid = document.getElementById('productGrid');
+  grid.innerHTML = products.map((p, pi) => {
+    const tiersHtml = p.tiers.map((t, ti) => `
+      <div class="tier ${selectedTiers[p.id] === ti ? 'selected' : ''}"
+           onclick="selectTier(${p.id}, ${ti})" data-pid="${p.id}" data-ti="${ti}">
+        <span class="tier-qty">${t.qty}</span>
+        <span class="tier-price">${formatPrice(t.unit)}/u</span>
+        ${t.total > 0 ? `<span class="tier-total">Lote: ${formatPrice(t.total)}</span>` : ''}
+      </div>`).join('');
+
+    const isRancho = ['oficina','llavero','banner','madera'].includes(p.cat);
+  return `
+    <div class="card ${isRancho ? 'rancho' : ''}" data-id="${p.id}" data-cat="${p.cat}" data-name="${p.name.toLowerCase()}" data-subtitle="${p.subtitle.toLowerCase()}" style="animation-delay:${pi*0.05}s">
+      <div class="card-img">
+        <span class="card-cat">${p.cat === 'servicio' ? 'Servicio' : p.cat === 'madera' ? 'Tablas' : p.cat === 'cuchillo' ? 'Cuchillos' : p.cat === 'llavero' ? 'Llaveros' : p.cat.charAt(0).toUpperCase()+p.cat.slice(1)}</span>
+        ${p.emoji}
+      </div>
+      <div class="card-body">
+        <div class="card-title">${p.name}</div>
+        <div class="card-subtitle">${p.subtitle}</div>
+        <div class="price-tiers" id="tiers-${p.id}">${tiersHtml}</div>
+        <div class="card-footer">
+          <button class="add-btn" onclick="addToCart(${p.id})">
+            ＋ Agregar al pedido
+          </button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function selectTier(pid, ti) {
+  selectedTiers[pid] = ti;
+  const container = document.getElementById(`tiers-${pid}`);
+  container.querySelectorAll('.tier').forEach((el, i) => {
+    el.classList.toggle('selected', i === ti);
+  });
+}
+
+function addToCart(pid) {
+  const product = products.find(p => p.id === pid);
+  const tierIdx = selectedTiers[pid];
+  const tier = product.tiers[tierIdx];
+
+  const existing = cart.find(i => i.pid === pid && i.tierIdx === tierIdx);
+  if (existing) {
+    showToast('Ya está en tu pedido ✓');
+    return;
+  }
+
+  cart.push({ pid, tierIdx, name: product.name, emoji: product.emoji,
+              qty: tier.qty, unit: tier.unit, total: tier.total });
+
+  updateCartUI();
+  showToast(`✓ ${product.name} agregado`);
+
+  // Animate button
+  const btn = document.querySelector(`.card[data-cat="${product.cat}"] .add-btn`);
+}
+
+function removeFromCart(idx) {
+  cart.splice(idx, 1);
+  updateCartUI();
+}
+
+const FREE_SHIPPING = 350000;
+const DISCOUNT_5 = 300000;
+
+function updateProgress() {
+  const total = cart.reduce((s, i) => s + i.total, 0);
+  const el = document.getElementById('cartProgress');
+  if (cart.length === 0) { el.innerHTML = ''; return; }
+
+  // Shipping bar
+  const shipPct = Math.min(100, Math.round((total / FREE_SHIPPING) * 100));
+  const shipDone = total >= FREE_SHIPPING;
+  const shipLeft = FREE_SHIPPING - total;
+
+  // Discount bar
+  const discPct = Math.min(100, Math.round((total / DISCOUNT_5) * 100));
+  const discDone = total >= DISCOUNT_5;
+  const discLeft = DISCOUNT_5 - total;
+
+  el.innerHTML = `
+    <div class="progress-block">
+      <div class="progress-header">
+        <span class="progress-label">🚚 Envío gratis <span>$350.000</span></span>
+        <span class="progress-label">${shipPct}%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill ${shipDone ? 'done' : ''}" style="width:${shipPct}%"></div>
+      </div>
+      <div class="progress-msg ${shipDone ? 'achieved' : ''}">
+        ${shipDone ? '✓ ¡Envío gratis desbloqueado!' : 'Te faltan ' + formatPrice(shipLeft) + ' para envío gratis'}
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-header">
+        <span class="progress-label">💸 5% OFF extra <span>$300.000</span></span>
+        <span class="progress-label">${discPct}%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill ${discDone ? 'done' : ''}" style="width:${discPct}%"></div>
+      </div>
+      <div class="progress-msg ${discDone ? 'achieved' : ''}">
+        ${discDone ? '✓ ¡5% OFF desbloqueado!' : 'Te faltan ' + formatPrice(Math.max(0,discLeft)) + ' para el 5% OFF'}
+      </div>
+    </div>`;
+}
+
+function updateCartUI() {
+  const count = cart.length;
+  document.getElementById('cartCount').textContent = count;
+  updateProgress();
+  const sub = cart.reduce((s, i) => s + i.total, 0);
+  const badge = document.getElementById('discountBadge');
+  if (sub >= DISCOUNT_5 && sub > 0) {
+    badge.style.display = 'block';
+    document.getElementById('discountAmount').textContent = formatPrice(Math.round(sub * 0.05));
+  } else {
+    badge.style.display = 'none';
+  }
+
+  const itemsEl = document.getElementById('cartItems');
+  if (count === 0) {
+    itemsEl.innerHTML = `<div class="cart-empty">
+      <span class="cart-empty-icon">🛒</span>
+      <p>Tu pedido está vacío.<br>Elegí los productos y las cantidades.</p>
+    </div>`;
+    document.getElementById('cartTotal').textContent = '$0';
+    return;
+  }
+
+  itemsEl.innerHTML = cart.map((item, i) => `
+    <div class="cart-item">
+      <span class="cart-item-icon">${item.emoji}</span>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-detail">${item.qty} · ${item.unit > 0 ? formatPrice(item.unit)+'/u' : 'A consultar'}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <span class="cart-item-price">${item.total > 0 ? formatPrice(item.total) : 'Consultar'}</span>
+        <button class="cart-item-remove" onclick="removeFromCart(${i})">✕</button>
+      </div>
+    </div>`).join('');
+
+  const subtotal = cart.reduce((s, i) => s + i.total, 0);
+  const hasDiscount = subtotal >= DISCOUNT_5;
+  const total = hasDiscount ? Math.round(subtotal * 0.95) : subtotal;
+  const totalEl = document.getElementById('cartTotal');
+  if (hasDiscount && subtotal > 0) {
+    totalEl.innerHTML = `<span style="text-decoration:line-through;font-size:0.85rem;color:#aaa;font-weight:600;">${formatPrice(subtotal)}</span> <span style="color:var(--acento)">${formatPrice(total)}</span>`;
+  } else {
+    totalEl.textContent = subtotal > 0 ? formatPrice(subtotal) : 'A consultar';
+  }
+}
+
+function toggleCart() {
+  const panel = document.getElementById('cartPanel');
+  const overlay = document.getElementById('cartOverlay');
+  panel.classList.toggle('open');
+  overlay.classList.toggle('open');
+  document.body.style.overflow = panel.classList.contains('open') ? 'hidden' : '';
+}
+
+function sendWhatsApp() {
+  if (cart.length === 0) { showToast('Agregá productos primero'); return; }
+
+  // Validate contact fields
+  const nombre   = document.getElementById('fNombre').value.trim();
+  const empresa  = document.getElementById('fEmpresa').value.trim();
+  const ciudad   = document.getElementById('fCiudad').value.trim();
+  const provincia= document.getElementById('fProvincia').value.trim();
+
+  let valid = true;
+  ['fNombre','fEmpresa','fCiudad','fProvincia'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { el.classList.add('error'); valid = false; }
+    else el.classList.remove('error');
+  });
+  if (!valid) {
+    showToast('⚠️ Completá tus datos antes de enviar');
+    document.getElementById('fNombre').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  let msg = '¡Hola Fragus! Quiero hacer un pedido 🛒\n\n';
+  msg += `👤 *${nombre}*\n`;
+  msg += `🏢 ${empresa}\n`;
+  msg += `📍 ${ciudad}, ${provincia}\n\n`;
+  msg += '*Productos:*\n';
+  cart.forEach(item => {
+    msg += `• ${item.name} — ${item.qty}`;
+    if (item.unit > 0) msg += ` (${formatPrice(item.unit)}/u)`;
+    msg += '\n';
+  });
+  const subtotalWA = cart.reduce((s, i) => s + i.total, 0);
+  const hasDiscountWA = subtotalWA >= DISCOUNT_5;
+  const totalWA = hasDiscountWA ? Math.round(subtotalWA * 0.95) : subtotalWA;
+  if (subtotalWA > 0) {
+    if (hasDiscountWA) {
+      msg += `\n💸 *Subtotal: ${formatPrice(subtotalWA)}*`;
+      msg += `\n🎉 *5% OFF aplicado: -${formatPrice(subtotalWA - totalWA)}*`;
+      msg += `\n💰 *Total con descuento: ${formatPrice(totalWA)}*`;
+    } else {
+      msg += `\n💰 *Total estimado: ${formatPrice(subtotalWA)}*`;
+    }
+  }
+  msg += '\n\n¿Me podés confirmar disponibilidad y tiempos de entrega? ¡Gracias!';
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+function openWhatsApp() {
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('¡Hola Fragus! Quiero consultar sobre regalería empresarial con grabado láser.')}`, '_blank');
+}
+
+// filterProducts is now handled by applyFilters()
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ── SLIDER ──────────────────────────────────────────────────────────────────
+const slides = [
+  { icon: '🎁', text: 'REGALOS A CLIENTES Y PROVEEDORES' },
+  { icon: '🧉', text: 'BIENVENIDA A EMPLEADOS' },
+  { icon: '🚗', text: 'ENTREGA DE 0KM — KIT PARA CONCESIONARIAS' },
+  { icon: '💼', text: 'KITS CORPORATIVOS A MEDIDA' },
+  { icon: '🎂', text: 'SOUVENIRS DE CUMPLEAÑOS Y EVENTOS' },
+  { icon: '💍', text: 'RECUERDOS DE CASAMIENTO Y CASAMIENTOS' },
+  { icon: '🏆', text: 'PREMIOS Y RECONOCIMIENTOS EMPRESARIALES' },
+  { icon: '🌾', text: 'REGALOS PARA EL SECTOR AGRO Y GANADERO' },
+  { icon: '🚛', text: 'KITS PARA FLOTAS Y TRANSPORTE' },
+  { icon: '🤝', text: 'FIDELIZACION DE CLIENTES' },
+];
+
+let currentSlide = 0;
+
+// ── GALLERY ──────────────────────────────────────────────────────────────────
+const galleryItems = [
+  { emoji: '🧉', label: 'Mates de acero grabados', desc: 'Mate acero · Logo empresarial' },
+  { emoji: '♨️', label: 'Termos media manija', desc: 'Termo negro · Grabado láser' },
+  { emoji: '🎁', label: 'Kit Combo empresarial', desc: 'Mate + Termo · Kit corporativo' },
+  { emoji: '🥥', label: 'Mates imperiales', desc: 'Calabaza · Virola de acero' },
+  { emoji: '🌳', label: 'Mates de algarrobo', desc: 'Algarrobo · Logo grabado' },
+  { emoji: '🪵', label: 'Tablas de madera', desc: 'Pino 20x30 · Empresa grabada' },
+  { emoji: '🔪', label: 'Cuchillos artesanales', desc: 'Acero dagger · Cabo artesanal' },
+  { emoji: '🥤', label: 'Vasos ferneteros', desc: 'Aluminio 750cc · Grabado láser' },
+  { emoji: '🌿', label: 'Kit criollo', desc: 'Mate + bombilla + yerbero' },
+  { emoji: '🔑', label: 'Llaveros personalizados', desc: 'Cinta y dome · Logo grabado' },
+  { emoji: '🖊️', label: 'Lapiceras personalizadas', desc: 'Grabado láser · Logo empresarial' },
+  { emoji: '🏷️', label: 'Calcomanías', desc: 'Vinilo · Logo a todo color' },
+  { emoji: '📓', label: 'Anotadores personalizados', desc: 'Tapa grabada · Logo empresarial' },
+  { emoji: '🪧', label: 'Banners y Roll Ups', desc: 'Impresión full color · Con estructura' },
+];
+
+const VISIBLE = 3;
+let galleryOffset = 0;
+let autoGallery;
+
+function buildGallery() {
+  const track = document.getElementById('galleryTrack');
+  track.innerHTML = galleryItems.map((item, i) => `
+    <div class="gallery-item" onclick="openLightbox(${i})">
+      <div class="gallery-placeholder">
+        <span class="gallery-placeholder-icon">${item.emoji}</span>
+        <span class="gallery-placeholder-text">${item.label}</span>
+      </div>
+      <div class="gallery-overlay">
+        <span class="gallery-overlay-text">📷 ${item.desc}</span>
+      </div>
+    </div>`).join('');
+
+  const dots = document.getElementById('galleryDots');
+  const pages = galleryItems.length - VISIBLE + 1;
+  dots.innerHTML = Array.from({length: pages}, (_, i) =>
+    `<span class="gallery-dot ${i===0?'active':''}" onclick="goGallery(${i})"></span>`
+  ).join('');
+  updateGalleryNav();
+}
+
+function moveGallery(dir) {
+  const pages = galleryItems.length - VISIBLE;
+  galleryOffset = Math.max(0, Math.min(pages, galleryOffset + dir));
+  applyGalleryOffset();
+}
+
+function goGallery(idx) {
+  galleryOffset = idx;
+  applyGalleryOffset();
+}
+
+function applyGalleryOffset() {
+  const itemW = document.querySelector('.gallery-item')?.offsetWidth + 12 || 0;
+  document.getElementById('galleryTrack').style.transform = `translateX(-${galleryOffset * itemW}px)`;
+  document.querySelectorAll('.gallery-dot').forEach((d,i) => d.classList.toggle('active', i===galleryOffset));
+  updateGalleryNav();
+}
+
+function updateGalleryNav() {
+  const pages = galleryItems.length - VISIBLE;
+  document.getElementById('galleryPrev').disabled = galleryOffset === 0;
+  document.getElementById('galleryNext').disabled = galleryOffset >= pages;
+}
+
+function openLightbox(i) {
+  const item = galleryItems[i];
+  document.getElementById('lightboxContent').innerHTML = `
+    <div class="lightbox-placeholder">
+      <span style="font-size:5rem">${item.emoji}</span>
+      <span style="color:var(--verde);font-weight:800;font-size:1rem">${item.label}</span>
+      <span style="color:var(--gris);font-size:0.82rem">Foto próximamente</span>
+    </div>`;
+  document.getElementById('lightboxCaption').textContent = item.desc;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── COUNTER ANIMATION ────────────────────────────────────────────────────────
+function animateCounter(el, target, duration = 1800) {
+  const plus = el.querySelector('.counter-plus');
+  let start = 0;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    start = Math.min(start + step, target);
+    el.childNodes[0].textContent = '+' + Math.floor(start).toLocaleString('es-AR');
+    if (start >= target) {
+      el.childNodes[0].textContent = '+' + target.toLocaleString('es-AR');
+      clearInterval(timer);
+    }
+  }, 16);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      document.querySelectorAll('.counter-num[data-target]').forEach(el => {
+        const target = parseInt(el.dataset.target);
+        animateCounter(el, target);
+      });
+      counterObserver.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+
+const counterSection = document.querySelector('.counter-section');
+if (counterSection) counterObserver.observe(counterSection);
+
+buildGallery();
+autoGallery = setInterval(() => {
+  const pages = galleryItems.length - VISIBLE;
+  galleryOffset = galleryOffset >= pages ? 0 : galleryOffset + 1;
+  applyGalleryOffset();
+}, 3500);
+
+// ── TICKER ───────────────────────────────────────────────────────────────────
+const tickerItems = [
+  { icon: '🚚', text: 'ENVÍOS GRATIS a partir de $350.000 en el lote' },
+  { icon: '💸', text: '5% OFF EXTRA a partir de $300.000 en el pedido' },
+  { icon: '⚡', text: 'GRABADO LÁSER incluido en todos los productos' },
+  { icon: '🏭', text: 'PRODUCCIÓN PROPIA — precios directos sin intermediarios' },
+  { icon: '📦', text: 'ENVIAMOS a todo el país por Vía Cargo y Correo Argentino' },
+  { icon: '💳', text: 'MERCADO PAGO · VISA · MASTERCARD · TRANSFERENCIA' },
+];
+
+function buildTicker() {
+  const track = document.getElementById('tickerTrack');
+  // Duplicate items for seamless loop
+  const html = [...tickerItems, ...tickerItems].map(item =>
+    `<span class="ticker-item">${item.icon} ${item.text} <span class="ticker-sep">|</span></span>`
+  ).join('');
+  track.innerHTML = html;
+}
+buildTicker();
+
+function buildSlider() {
+  const wrap = document.getElementById('sliderWrap');
+  const dotsEl = document.getElementById('sliderDots');
+  wrap.innerHTML = slides.map((s, i) => `
+    <div class="slide ${i === 0 ? 'active' : ''}" id="slide-${i}">
+      <span class="slide-icon">${s.icon}</span>
+      <span class="slide-text">${s.text}</span>
+    </div>`).join('');
+  dotsEl.innerHTML = slides.map((_, i) =>
+    `<span class="dot ${i === 0 ? 'active' : ''}" onclick="goSlide(${i})"></span>`
+  ).join('');
+}
+
+function goSlide(idx) {
+  const prev = document.getElementById(`slide-${currentSlide}`);
+  prev.classList.remove('active');
+  prev.classList.add('exit');
+  setTimeout(() => prev.classList.remove('exit'), 560);
+
+  currentSlide = idx;
+  document.getElementById(`slide-${currentSlide}`).classList.add('active');
+
+  document.querySelectorAll('.dot').forEach((d, i) =>
+    d.classList.toggle('active', i === currentSlide));
+}
+
+function nextSlide() {
+  goSlide((currentSlide + 1) % slides.length);
+}
+
+buildSlider();
+setInterval(nextSlide, 3200);
+
+// ── SEARCH ───────────────────────────────────────────────────────────────────
+let currentSearch = '';
+let currentFilter = 'all';
+
+// ── AUTOCOMPLETE ─────────────────────────────────────────────────────────────
+let acFocused = -1;
+
+function getCatLabel(cat) {
+  const map = { mate:'Mate', termo:'Termo', kit:'Kit', madera:'Tablas',
+                vaso:'Vaso', cuchillo:'Cuchillos', llavero:'Llaveros',
+                banner:'Banners', oficina:'Oficina', servicio:'Servicio' };
+  return map[cat] || cat;
+}
+
+function isRanchoCat(cat) {
+  return ['oficina','llavero','banner','madera'].includes(cat);
+}
+
+function showAutocomplete(val) {
+  const list = document.getElementById('autocompleteList');
+  acFocused = -1;
+  if (!val || val.length < 1) { list.classList.remove('open'); return; }
+
+  const q = val.toLowerCase();
+  const matches = products.filter(p =>
+    (p.name + ' ' + p.subtitle + ' ' + p.cat).toLowerCase().includes(q)
+  ).slice(0, 6);
+
+  if (matches.length === 0) {
+    list.innerHTML = `<div class="autocomplete-empty">Sin resultados para "<strong>${val}</strong>"</div>`;
+    list.classList.add('open');
+    return;
+  }
+
+  list.innerHTML = matches.map((p, i) => `
+    <div class="autocomplete-item" data-idx="${i}" onmousedown="selectAutocomplete(${p.id})">
+      <span class="autocomplete-icon">${p.emoji}</span>
+      <div style="flex:1;min-width:0;">
+        <div class="autocomplete-name">${highlight(p.name, q)}</div>
+        <div class="autocomplete-sub">${p.subtitle.substring(0, 50)}${p.subtitle.length > 50 ? '…' : ''}</div>
+      </div>
+      <span class="autocomplete-cat ${isRanchoCat(p.cat) ? 'rancho' : ''}">${getCatLabel(p.cat)}</span>
+    </div>`).join('');
+  list.classList.add('open');
+}
+
+function highlight(text, q) {
+  const idx = text.toLowerCase().indexOf(q);
+  if (idx === -1) return text;
+  return text.substring(0, idx) +
+    '<mark style="background:var(--verde-claro);border-radius:3px;padding:0 2px;">' +
+    text.substring(idx, idx + q.length) + '</mark>' +
+    text.substring(idx + q.length);
+}
+
+function selectAutocomplete(pid) {
+  const p = products.find(x => x.id === pid);
+  if (!p) return;
+  const input = document.getElementById('searchInput');
+  input.value = p.name;
+  currentSearch = p.name.toLowerCase();
+  document.getElementById('searchClear').classList.add('visible');
+  document.getElementById('autocompleteList').classList.remove('open');
+  applyFilters();
+  // Scroll to first matching card
+  setTimeout(() => {
+    const card = document.querySelector('.card[data-id="' + pid + '"]');
+    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 100);
+}
+
+function handleSearchKey(e) {
+  const list = document.getElementById('autocompleteList');
+  const items = list.querySelectorAll('.autocomplete-item');
+  if (!list.classList.contains('open') || !items.length) return;
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    acFocused = Math.min(acFocused + 1, items.length - 1);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    acFocused = Math.max(acFocused - 1, 0);
+  } else if (e.key === 'Enter' && acFocused >= 0) {
+    e.preventDefault();
+    items[acFocused].dispatchEvent(new MouseEvent('mousedown'));
+    return;
+  } else if (e.key === 'Escape') {
+    list.classList.remove('open'); return;
+  }
+  items.forEach((el, i) => el.classList.toggle('focused', i === acFocused));
+  if (acFocused >= 0) items[acFocused].scrollIntoView({ block: 'nearest' });
+}
+
+// Close autocomplete on outside click
+document.addEventListener('click', e => {
+  if (!e.target.closest('.search-box')) {
+    document.getElementById('autocompleteList').classList.remove('open');
+  }
+});
+
+function handleSearch(val) {
+  currentSearch = val.toLowerCase().trim();
+  document.getElementById('searchClear').classList.toggle('visible', val.length > 0);
+  showAutocomplete(val.trim());
+  applyFilters();
+}
+
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  currentSearch = '';
+  document.getElementById('searchClear').classList.remove('visible');
+  document.getElementById('autocompleteList').classList.remove('open');
+  applyFilters();
+}
+
+function filterProducts(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter = cat;
+  applyFilters();
+}
+
+function applyFilters() {
+  const cards = document.querySelectorAll('.card[data-id]');
+  let visible = 0;
+  cards.forEach(card => {
+    const matchCat = currentFilter === 'all' || card.dataset.cat === currentFilter;
+    const searchable = (card.dataset.name + ' ' + card.dataset.subtitle + ' ' + card.dataset.cat).toLowerCase();
+    const matchSearch = !currentSearch || searchable.includes(currentSearch);
+    const show = matchCat && matchSearch;
+    card.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+  const noRes = document.getElementById('noResults');
+  document.getElementById('noResultsTerm').textContent = currentSearch;
+  noRes.classList.toggle('show', visible === 0 && currentSearch.length > 0);
+}
+
+renderGrid();
+</script>
+</body>
+</html>
