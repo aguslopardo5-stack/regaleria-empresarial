@@ -2307,10 +2307,28 @@ function updateCartUI() {
 
 function setCartPanelHeight() {
   const panel = document.getElementById('cartPanel');
-  if (panel) panel.style.height = window.innerHeight + 'px';
+  if (!panel) return;
+  if (window.visualViewport) {
+    const vv = window.visualViewport;
+    panel.style.height = vv.height + 'px';
+    panel.style.top = vv.offsetTop + 'px';
+  } else {
+    panel.style.height = window.innerHeight + 'px';
+    panel.style.top = '0px';
+  }
 }
 window.addEventListener('resize', setCartPanelHeight);
 window.addEventListener('orientationchange', setCartPanelHeight);
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', setCartPanelHeight);
+  window.visualViewport.addEventListener('scroll', setCartPanelHeight);
+}
+['fNombre','fEmpresa','fCiudad','fProvincia'].forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('focus', () => setTimeout(setCartPanelHeight, 300));
+  el.addEventListener('blur', () => setTimeout(setCartPanelHeight, 300));
+});
 setCartPanelHeight();
 
 let cartScrollY = 0;
@@ -2878,6 +2896,22 @@ function applyFilters() {
 }
 
 renderGrid();
+
+// Precarga y decodifica todas las imágenes en segundo plano,
+// así no hay delay la primera vez que se ve una categoría (ej: Oficina)
+function preloadAllImages() {
+  const imgs = document.querySelectorAll('.card img');
+  imgs.forEach(img => {
+    if (img.decode) {
+      img.decode().catch(() => {});
+    }
+  });
+}
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(preloadAllImages, { timeout: 2000 });
+} else {
+  setTimeout(preloadAllImages, 300);
+}
 </script>
 </body>
 </html>
