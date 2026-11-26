@@ -1,0 +1,21 @@
+{
+  "name": "regaleria-empresarial",
+  "version": "1.0.0",
+  "description": "Fragus - Regalería Empresarial",
+  "main": "index.html",
+  "scripts": {
+    "dev": "echo 'Development server not configured'",
+    "build": "echo 'Build completed'",
+    "lint": "echo 'Linting completed'"
+  },
+  "keywords": [
+    "regaleria",
+    "empresarial",
+    "fragus"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.1.0"
+  }
+}
